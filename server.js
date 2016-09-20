@@ -13,8 +13,6 @@ const PORT = process.env.PORT || 3000;
 const server = http.createServer(function(req, res) {
   req.url = url.parse(req.url);
   req.url.query = queryString.parse(req.url.query);
-  res.write(cowsay.say({text: 'sup'}));
-  res.end();
 
   if(req.method === 'POST') {
     parseBody(req, function(err) {
@@ -22,8 +20,14 @@ const server = http.createServer(function(req, res) {
     });
   }
 
-  if(req.method === 'GET' && req.url.pathname === '/home') {
-    fs.createReadStream('./server.js').pipe(res);
+  if(req.method === 'GET' && req.url.pathname === '/') {
+    res.writeHead(200,'{Content-Type: text/plain}');
+  }
+
+  if(req.method === 'GET' && req.url.pathname === '/cowsay' && req.url.query.text) {
+    res.writeHead(200);
+    res.write(cowsay.say({text: req.url.query.text}));
+    res.end();
   }
 
   res.statuscode = 404;
