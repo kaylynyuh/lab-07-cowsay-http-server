@@ -1,6 +1,6 @@
 'use strict';
 
-const fs = require('fs');
+// const fs = require('fs');
 const http = require('http');
 const url = require('url');
 const queryString = require('querystring');
@@ -16,13 +16,14 @@ const server = http.createServer(function(req, res) {
 
   if(req.method === 'GET' && req.url.pathname === '/') {
     res.writeHead(200,{'Content-Type': 'text/plain'});
+    res.end();
   }
 
   if(req.method === 'GET' && req.url.pathname === '/cowsay' && req.url.query.text) {
     res.writeHead(200);
     res.write(cowsay.say({text: req.url.query.text}));
     res.end();
-  } else if (!req.url.query.text) {
+  } else if (req.method === 'GET' && req.url.pathname === '/cowsay' && !req.url.query.text) {
     res.writeHead(400);
     res.write(cowsay.say({text: 'bad request\ntry: localhost:3000/cowsay?text=howdy'}));
     res.end();
