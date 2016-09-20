@@ -1,0 +1,26 @@
+{
+  "name": "lab-07-cowsay-http-server",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) lab-07-cowsay-http-server ======",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaylynyuh/lab-07-cowsay-http-server.git"
+  },
+  "author": "yuhkay4@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kaylynyuh/lab-07-cowsay-http-server/issues"
+  },
+  "homepage": "https://github.com/kaylynyuh/lab-07-cowsay-http-server#readme",
+  "devDependencies": {
+    "eslint": "^3.5.0"
+  },
+  "dependencies": {
+    "cowsay": "^1.1.8"
+  }
+}
